@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+icm_publisher/__init__.py
+icm_publisher/publisher.py
+icm_publisher.egg-info/PKG-INFO
+icm_publisher.egg-info/SOURCES.txt
+icm_publisher.egg-info/dependency_links.txt
+icm_publisher.egg-info/entry_points.txt
+icm_publisher.egg-info/requires.txt
+icm_publisher.egg-info/top_level.txt
+icm_publisher.egg-info/zip-safe
+resource/icm_publisher
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
