@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'icm_publisher'
+package_name = 'motor_subscriber'
 
 setup(
     name=package_name,
@@ -15,12 +15,12 @@ setup(
     zip_safe=True,
     maintainer='matwac',
     maintainer_email='mattwac59@gmail.com',
-    description='Publish ICM datas',
-    license='Apache License 2.0',
+    description='TODO: Package description',
+    license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-                'icm_publisher = icm_publisher.publisher:main',
+            'motorsub = motor_subscriber.subscriber:main',
         ],
     },
 )
