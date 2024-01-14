@@ -1,0 +1,45 @@
+{
+    "name": "ROS 2 Development Container",
+    "privileged": true,
+    "remoteUser": "matwac",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USERNAME": "matwac"
+        }
+    },
+    "workspaceFolder": "/home/ws",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/ws/src,type=bind",
+    "customizations": {
+        "vscode": {
+            "extensions":[
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-themes",
+                "twxs.cmake",
+                "donjayamanne.python-extension-pack",
+                "eamodio.gitlens",
+                "ms-iot.vscode-ros"
+            ]
+        }
+    },
+    "containerEnv": {
+        "DISPLAY": "unix:0",
+        "ROS_LOCALHOST_ONLY": "1",
+        "ROS_DOMAIN_ID": "42"
+    },
+    "runArgs": [
+        "--net=host",
+        "-e", "DISPLAY=${env:DISPLAY}",
+        "--device=/dev/i2c-1", "--privileged",
+        "--device=/dev/ttyUSB0"
+    ],
+    "mounts": [
+       "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+        "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder}/../cache/humble/build,target=/home/ws/build,type=bind",
+        "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/ws/install,type=bind",
+        "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/ws/log,type=bind",
+        "source=/dev/i2c-1,target=/dev/i2c-1,type=bind,consistency=cached"
+    ],
+    "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R matwac /home/ws/ && sudo chmod 666 /dev/i2c-1 && sudo chmod 666 /dev/ttyUSB0"
+}
