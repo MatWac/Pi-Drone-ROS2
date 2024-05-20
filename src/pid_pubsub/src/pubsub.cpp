@@ -44,7 +44,7 @@ class PIDController {
 class PIDPubSub : public rclcpp::Node
 {
   public:
-    PIDPubSub(): Node("pid_pubsub"), pid_roll(0.1, 0.0, 0.0), pid_pitch(0.1, 0.0, 0.0)
+    PIDPubSub(): Node("pid_pubsub"), pid_roll(0.8, 0.0, 0.0), pid_pitch(0.8, 0.0, 0.0)
     {
       subscription_ = this->create_subscription<geometry_msgs::msg::Vector3>(
       "angles", 10, std::bind(&PIDPubSub::topic_callback, this, _1));
